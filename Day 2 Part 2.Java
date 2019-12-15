@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Scratch {
+    public static void main(String[] args) {
+        List<Integer> intCode = new ArrayList<>(Arrays.asList(
+                1, 0, 0, 3, 1, 1, 2, 3, 1, 3, 4, 3, 1, 5, 0, 3, 2, 13, 1, 19, 1, 6, 19, 23, 2, 6, 23, 27, 1, 5, 27, 31, 2, 31, 9, 35, 1, 35, 5, 39, 1, 39, 5, 43, 1,
+                43, 10, 47, 2, 6, 47, 51, 1, 51, 5, 55, 2, 55, 6, 59, 1, 5, 59, 63, 2, 63, 6, 67, 1, 5, 67, 71, 1, 71, 6, 75, 2, 75, 10, 79, 1, 79, 5, 83, 2, 83, 6,
+                87, 1, 87, 5, 91, 2, 9, 91, 95, 1, 95, 6, 99, 2, 9, 99, 103, 2, 9, 103, 107, 1, 5, 107, 111, 1, 111, 5, 115, 1, 115, 13, 119, 1, 13, 119, 123, 2, 6,
+                123, 127, 1, 5, 127, 131, 1, 9, 131, 135, 1, 135,
+                9, 139, 2, 139, 6, 143, 1, 143, 5, 147, 2, 147, 6, 151, 1, 5, 151, 155, 2, 6, 155, 159, 1, 159, 2, 163, 1, 9, 163, 0, 99, 2, 0, 14, 0));
+        //System.out.println(intCode + " = Beginning Input");
+        int completeRounds = 0;
+        int round = 0;
+        int codeSearch = 19690720;
+        while (completeRounds <= 99) {
+            if (codeSearch != 0) {
+                if (round > 99) {
+                    completeRounds++;
+                    //System.out.println("Completed Set #:" + completeRounds);
+                    round = 0;
+                }
+                if (intCode.get(0) == codeSearch) {
+                    //System.out.println("Intcode Request Found: Terminating Program.");
+                    break;
+                } else {
+                    intCode = getInput();
+                    intCode.set(1, completeRounds);
+                    intCode.set(2, round);
+                    //System.out.println("Currently Completed and Ongoing round:" + completeRounds + " " + round);
+                }
+            }
+            for (int i = 0; i < intCode.size(); i++) {
+                int opCode = intCode.get(i);
+                System.out.println("Current OpCode Call:" + intCode.get(i));
+                if (opCode == 99) {
+                    System.out.println("System Call 99: Terminating Program.");
+                    break;
+                }
+                i++;
+                int tempLoc = intCode.get(i);
+                System.out.println("Current Location Call A:" + tempLoc);
+                int a = intCode.get(tempLoc);
+                System.out.println("Current Location Call Result:" + a);
+                i++;
+                tempLoc = intCode.get(i);
+                System.out.println("Current Location Call B:" + tempLoc);
+                int b = intCode.get(tempLoc);
+                System.out.println("Current Location Call Result:" + b);
+                i++;
+                int loc = intCode.get(i);
+                System.out.println("Current Location for Writing:" + loc);
+                switch (opCode) {
+                    case 1:
+                        intCode.set(loc, a + b);
+                        System.out.println(intCode + " = Added to intCode");
+                        break;
+                    case 2:
+                        intCode.set(loc, a * b);
+                        System.out.println(intCode + " = Multiplied in intCode");
+                        break;
+                    default:
+                        break;
+                }
+            }
+                    if (codeSearch != 0) {
+                        if (intCode.get(0) != codeSearch) {
+                            round++;
+                            //System.out.println("Round Complete.");
+                        }
+                    }
+                }
+                System.out.println(intCode + " = Final Result");
+            }
+            static ArrayList<Integer> getInput() {
+                    return new ArrayList<>(Arrays.asList(
+                            1,0,0,3,1,1,2,3,1,3,4,3,1,5,0,3,2,13,1,19,1,6,19,23,2,6,23,27,1,5,27,31,2,31,9,35,1,35,5,39,1,39,5,43,1,
+                            43,10,47,2,6,47,51,1,51,5,55,2,55,6,59,1,5,59,63,2,63,6,67,1,5,67,71,1,71,6,75,2,75,10,79,1,79,5,83,2,83,6,
+                            87,1,87,5,91,2,9,91,95,1,95,6,99,2,9,99,103,2,9,103,107,1,5,107,111,1,111,5,115,1,115,13,119,1,13,119,123,2,6,
+                            123,127,1,5,127,131,1,9,131,135,1,135,
+                            9,139,2,139,6,143,1,143,5,147,2,147,6,151,1,5,151,155,2,6,155,159,1,159,2,163,1,9,163,0,99,2,0,14,0            ));
+            }
+        }
