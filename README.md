@@ -1,2 +1,2 @@
 # NullSpace
-Place for portfolio and finished Advent of Code pieces. For showing potential employers ONLY. Anything else goes in StellarSingularity.
+Place for Advent of Code pieces and Portfolio.
