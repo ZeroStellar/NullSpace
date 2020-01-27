@@ -1,2 +1,5 @@
 # NullSpace
-Place for portfolio and finished Advent of Code pieces. For showing potential employers ONLY. Anything else goes in StellarSingularity.
+
+Location of Advent of Code pieces and project contributions for portfolio.
+
+Advent of Code 2019 Participation Solutions.
